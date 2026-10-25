@@ -1,56 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to create a website using HTML and CSS</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lee Marquez, aerospace engineering student.">
+  <title>Lee Marquez's Home Page</title>
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-<header>
-<nav>
-<ul>
-<li><a href="#intro">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
-<main>
-<section id="intro">
-<div class="Container">
-<img src="Images/NASAlogo.jpg" alt="display group logo">
-<h2>idp group 3</h2>
-</div> 
-</section>
+  <main>
+    <header>
+      <h1>Welcome to Lee Marquez's Home Page!</h1>
+      <p><em>AeroAstro @ MIT</em></p>
+    </header>
+    <section aria-labelledby="projects-title">
+      <hr>
+      <h2 id="projects-title">PROJECTS AND EXPERIENCE</h2>
+      <!-- Temporary highlights from my résumé; links go to the teams and programs. -->
+      <dl class="projects">
+        <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a></dt>
+        <dd>Undergraduate research on vision-language models for robot navigation.</dd>
 
-<section id="about">
-<div class="container">
-<h1>About Us</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, similique?</p>
-<ul>
-<li>Btech Qualified</li>
-<li>Software Engineer</li>
-<li>GATE AIR 01</li>
-</ul>
-</div>
-</section>
+        <dt><a href="https://web.mit.edu/dbf/www/">MIT Design/Build/Fly</a></dt>
+        <dd>Aerodynamics subteam member working on competition aircraft design.</dd>
 
-<section id="contact">
-<div class="container">
-<h1>Contact</h1>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam, laudantium.</p>
-<ul>
-<li>Email: </li>
-<li>Instagram: </li>
-<li>Facebook: </li>
-</ul>
-</div>
-</section>
+        <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
+        <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
 
-</main>
-<footer>
-<p>© Copyright 2024 IDP Group 3 Ltd.</p>
-</footer>
+        <dt><a href="https://www.nasa.gov/learning-resources/nasa-student-launch/">NASA Student Launch Initiative</a></dt>
+        <dd>Co-captain and former safety officer; led a team of eight in high-power rocketry and payload research.</dd>
+
+        <dt><a href="https://www.rocketrychallenge.org/">American Rocketry Challenge</a></dt>
+        <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
+
+      </dl>
+      <hr>
+    </section>
+  </main>
+  <footer>
+    <p>
+      [ <a href="mailto:leexum@mit.edu">EMAIL</a> |
+      <a href="resume26.pdf">VIEW MY RÉSUMÉ</a> |
+      <a href="https://github.com/leeneptune">GITHUB</a> |
+      <a href="https://www.linkedin.com/in/leemarquez/">LINKEDIN</a> ]
+    </p>
+  </footer>
 </body>
 </html>
