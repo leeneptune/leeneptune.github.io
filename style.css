@@ -1,91 +1,96 @@
-html {
-  color-scheme: light;
-}
-/*css comments*/
+/* 1990s portal look: white page, navy bars, small Verdana. */
+
+html { color-scheme: light; }
+
 body {
   margin: 8px;
-  background: lightblue;
-  color: black;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 18px;
+  background: #ffffff;
+  color: #000000;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
-header {
-  padding: 1.5rem 0 2rem;
-  text-align: center;
-}
+p { margin: 4px 0 8px; }
 
-h1 {
-  font-size: 2em;
-}
+a:link    { color: #0000ee; }
+a:visited { color: #551a8b; }
+a:active  { color: #ff0000; }
 
-header p {
-  font-size: 1.25em;
-}
+/* Page table */
+table.page { max-width: 780px; margin: 0 auto; border: 1px solid #003399; }
 
-a:link {
-  color: #0000ee;
-}
+/* Header */
+td.logo { background: #ffffcc; border-bottom: 1px solid #003399; }
+.sitename, .sitename:link, .sitename:visited { font-family: "Times New Roman", Times, serif; font-size: 32px; font-weight: bold; color: #003399; text-decoration: none; }
+.sitename .alt { color: #cc0000; }
+.tagline { font-family: "Times New Roman", Times, serif; font-size: 14px; font-style: italic; color: #003399; margin-left: 8px; }
 
-a:visited {
-  color: #551a8b;
-}
+td.nav { background: #003399; color: #ffffff; font-weight: bold; text-align: center; }
+td.nav a:link, td.nav a:visited { color: #ffffff; }
 
-a:active {
-  color: #ff0000;
-}
+/* Columns */
+td.left   { background: #ffffcc; border-right: 1px solid #003399; line-height: 1.6; }
+td.center { line-height: 1.4; }
+td.right  { background: #eeeeee; border-left: 1px solid #003399; }
 
-a {
-  text-decoration: underline;
-}
+/* Sidebar links get a little arrow, MSN style */
+td.left a::before, td.right a::before { content: "\00bb\00a0"; color: #003399; }
 
-.about {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+/* Sub-page content (single wide column) */
+td.content { line-height: 1.4; padding: 4px 12px 12px; }
+td.content ul { margin: 4px 0 8px; padding-left: 20px; }
+.newslist { margin: 4px 0; padding-left: 20px; }
+.newslist li { margin-bottom: 6px; }
+.newslist b { color: #003399; }
 
-.about-photo {
-  width: 180px;
-  max-width: 100%;
-  height: auto;
-  flex-shrink: 0;
-}
+/* "more" links under each home-page box */
+.more { text-align: right; margin: 4px 0 8px; font-size: 11px; }
 
-.about p {
-  max-width: 65ch;
-  line-height: 1.5;
-}
-
-@media (max-width: 480px) {
-  .about {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-}
-
-.projects dt {
-  margin-top: 1.25rem;
-  font-size: 1.5em;
+/* Section heading bars */
+.bar {
+  background: #003399;
+  color: #ffffff;
   font-weight: bold;
-  font-variant-caps: small-caps;
+  text-transform: uppercase;
+  padding: 1px 4px;
+  margin: 10px 0 4px;
+  line-height: 1.4;
+}
+.bar:first-child { margin-top: 0; }
+
+/* "NEW!" badge */
+.new { color: #ff0000; font-size: 9px; font-weight: bold; vertical-align: super; }
+
+/* About photo */
+.photo { margin: 0 8px 4px 0; border: 1px solid #000000; }
+
+/* Projects */
+.projects { margin: 0; }
+.projects dt { margin-top: 6px; font-weight: bold; }
+.projects dd { margin: 0 0 0 16px; }
+
+/* News */
+.news { margin: 0; padding-left: 16px; }
+.news li { margin-bottom: 8px; }
+.news b { color: #003399; }
+
+/* Hit counter badge */
+.counter { margin-top: 2px; vertical-align: middle; }
+
+/* Weather strip */
+td.weather { text-align: center; border-top: 1px solid #003399; }
+td.weather .bar { margin-top: 0; }
+td.weather img { max-width: 100%; height: auto; border: 1px solid #000000; }
+
+/* Footer */
+td.footer { text-align: center; font-size: 10px; }
+td.footer hr { border: 0; border-top: 1px solid #003399; }
+
+/* Phones: stack the three columns. */
+@media (max-width: 600px) {
+  table.page, table.page tr, table.page td { display: block; width: auto; }
+  td.left, td.right { border: 0; }
 }
 
-.projects dd {
-  margin-left: 40px;
-  margin-top: 0.25rem;
-}
-
-footer {
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 1.25em;
-  font-weight: bold;
-}
-
-hr {
-  border: 0;
-  border-top: 2px groove white;
-}
+/* 404 page */
+.big { font-size: 14px; }

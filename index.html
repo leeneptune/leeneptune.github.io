@@ -7,53 +7,116 @@
   <title>Lee Marquez's Home Page</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<!-- The body of the page contains a main section with an about section and a projects and experience section. -->
 <body>
-  <main>
-    <header>
-      <h1>Welcome to Lee Marquez's Home Page! (WIP)</h1>
-      <p><em>AeroAstro @ MIT</em></p>
-    </header>
-    <section aria-labelledby="about-title">
-      <hr>
-      <h2 id="about-title">ABOUT</h2>
-      
-      <div class="about">
-        <img class="about-photo" src="Images/NASAlogo.jpg" alt="NASA logo, temporary placeholder for my portrait" width="180">
-        <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. At MIT, I'm involved in undergraduate research at the REALM Lab, Design/Build/Fly, and the Rocket Team. I enjoy working on aircraft, rockets, and autonomous systems. In my free time, I like to swim, play intermural soccer, and learn languages.</p>
-      </div>
-    </section>
-    <section aria-labelledby="projects-title">
-      <hr>
-      <h2 id="projects-title">PROJECTS AND EXPERIENCE</h2>
-      <!-- Temporary highlights from my résumé; links go to the teams and programs. -->
-      <dl class="projects">
-        <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a></dt>
-        <dd>Undergraduate research on vision-language models for robot navigation.</dd>
 
-        <dt><a href="https://web.mit.edu/dbf/www/">MIT Design/Build/Fly</a></dt>
-        <dd>Aerodynamics subteam member working on competition aircraft design.</dd>
+<!-- ===================== HEADER (same on every page) ===================== -->
+<table class="page" width="100%" cellspacing="0" cellpadding="4">
+<tr>
+  <td class="logo" colspan="3">
+    <a class="sitename" href="index.html">Lee Marquez's <span class="alt">Home Page</span></a>
+    <span class="tagline">&raquo; AeroAstro @ MIT</span>
+  </td>
+</tr>
+<tr>
+  <td class="nav" colspan="3">
+    <b>[</b> <a href="index.html">Home</a> <b>|</b>
+    <a href="about.html">About</a> <b>|</b>
+    <a href="projects.html">Projects</a> <b>|</b>
+    <a href="news.html">News</a> <b>|</b>
+    <a href="resume26.pdf">R&eacute;sum&eacute;</a> <b>|</b>
+    <a href="contact.html">Contact</a> <b>]</b>
+  </td>
+</tr>
 
-        <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
-        <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
+<!-- ===================== BODY: 3 COLUMNS ===================== -->
+<tr valign="top">
 
-        <dt><a href="https://www.nasa.gov/learning-resources/nasa-student-launch/">NASA Student Launch Initiative</a></dt>
-        <dd>Co-captain and former safety officer; led a team of eight in high-power rocketry and payload research.</dd>
+  <!-- ---------- LEFT COLUMN ---------- -->
+  <td class="left" width="160">
+    <div class="bar">links</div>
+    <a href="mailto:leexum@mit.edu">Email</a><br>
+    <a href="resume26.pdf">R&eacute;sum&eacute; (PDF)</a><br>
+    <a href="https://github.com/leeneptune">GitHub</a><br>
+    <a href="https://www.linkedin.com/in/leemarquez/">LinkedIn</a><br>
 
-        <dt><a href="https://www.rocketrychallenge.org/">American Rocketry Challenge</a></dt>
-        <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
+    <div class="bar">stats</div>
+    <b>5</b> projects listed<br>
+    <b>2nd</b> year at MIT<br>
+    You are visitor number:<br>
+    <!-- Live hit counter image from hits.sh; it counts every time the image loads. -->
+    <img class="counter" src="https://hits.sh/leeneptune.github.io.svg?label=visitors&amp;color=003399&amp;labelColor=cc0000&amp;style=flat-square" alt="hit counter">
+  </td>
 
-      </dl>
-      <hr>
-    </section>
-  </main>
-  <footer>
-    <p>
-      [ <a href="mailto:leexum@mit.edu">EMAIL</a> |
-      <a href="resume26.pdf">RÉSUMÉ</a> |
-      <a href="https://github.com/leeneptune">GITHUB</a> |
-      <a href="https://www.linkedin.com/in/leemarquez/">LINKEDIN</a> ]
-    </p>
-  </footer>
+  <!-- ---------- CENTER COLUMN ---------- -->
+  <td class="center">
+    <div class="bar">about</div>
+    <img class="photo" src="Images/NASAlogo.jpg" alt="NASA logo, temporary placeholder for my portrait" width="100" align="left">
+    <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. I work on aircraft,
+    rockets, and autonomous systems, and I'm originally from Long Beach, CA.</p>
+    <p class="more"><a href="about.html">Read more about me &raquo;</a></p>
+    <br clear="all">
+
+    <div class="bar">featured projects</div>
+    <!-- Top three only. The full list lives on projects.html. -->
+    <dl class="projects">
+      <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a> <span class="new">NEW!</span></dt>
+      <dd>Undergraduate research on vision-language models for robot navigation.</dd>
+
+      <dt><a href="https://web.mit.edu/dbf/www/">MIT Design/Build/Fly</a></dt>
+      <dd>Aerodynamics subteam member working on competition aircraft design.</dd>
+
+      <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
+      <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
+    </dl>
+    <p class="more"><a href="projects.html">See all projects &amp; experience &raquo;</a></p>
+  </td>
+
+  <!-- ---------- RIGHT COLUMN ---------- -->
+  <td class="right" width="180">
+    <div class="bar">news</div>
+    <!-- Latest three only. Full history lives on news.html. Template: <li><b>MM/DD/YY</b><br>Text.</li> -->
+    <ul class="news">
+      <li><b>11/02/26</b><br>Site goes live. Still a work in progress! <span class="new">NEW!</span></li>
+      <li><b>10/15/26</b><br>Joined the Rocket Team propulsion subteam.</li>
+      <li><b>09/01/26</b><br>Started sophomore year at MIT.</li>
+    </ul>
+    <p class="more"><a href="news.html">All news &raquo;</a></p>
+
+    <div class="bar">cool stuff</div>
+    <!-- One <p> per item. Add or remove lines freely. -->
+    <p>Currently reading: <i>Slaughterhouse-Five</i> by Kurt Vonnegut.</p>
+    <p>Learning: Spanish, Chinese, and Portuguese.</p>
+    <p>Pok&eacute;mon fan since forever.</p>
+  </td>
+
+</tr>
+
+<!-- ===================== WEATHER STRIP ===================== -->
+<tr>
+  <td class="weather" colspan="3">
+    <div class="bar">long beach, ca weather</div>
+    <!-- 7-day forecast image from 7timer.info. Change lat/lon in the URL to move it. -->
+    <img src="https://www.7timer.info/bin/civillight.php?lon=-118.19&amp;lat=33.77&amp;ac=0&amp;lang=en&amp;unit=british&amp;output=internal&amp;tzshift=0" alt="7-day weather forecast for Long Beach, CA" width="500" height="120">
+  </td>
+</tr>
+
+<!-- ===================== FOOTER (same on every page) ===================== -->
+<tr>
+  <td class="footer" colspan="3">
+    <hr>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="news.html">News</a> |
+    <a href="resume26.pdf">R&eacute;sum&eacute;</a> |
+    <a href="contact.html">Contact</a>
+    <br><br>
+    <b>Last updated:</b> 11/02/26 &nbsp;|&nbsp; Questions? <a href="mailto:leexum@mit.edu">Email me</a>.
+    <br>
+    Copyright &copy; 2026 Lee Marquez. This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.
+  </td>
+</tr>
+</table>
+
 </body>
 </html>
