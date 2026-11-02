@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Fun mode anchor: index.html#fun turns the toys on. Serious is the default. See "modes" in style.css. -->
+<span id="fun"></span>
 
 <!-- ===================== HEADER (same on every page) ===================== -->
 <table class="page" width="100%" cellspacing="0" cellpadding="4">
@@ -20,17 +22,17 @@
 </tr>
 <tr>
   <td class="nav" colspan="3">
-    <b>[</b> <a href="index.html">Home</a> <b>|</b>
-    <a href="about.html">About</a> <b>|</b>
-    <a href="projects.html">Projects</a> <b>|</b>
-    <a href="news.html">News</a> <b>|</b>
+    <b>[</b> <a class="s" href="index.html">Home</a><a class="f" href="index.html#fun">Home</a> <b>|</b>
+    <a class="s" href="about.html">About</a><a class="f" href="about.html#fun">About</a> <b>|</b>
+    <a class="s" href="projects.html">Projects</a><a class="f" href="projects.html#fun">Projects</a> <b>|</b>
+    <a class="s" href="news.html">News</a><a class="f" href="news.html#fun">News</a> <b>|</b>
     <a href="resume26.pdf">R&eacute;sum&eacute;</a> <b>|</b>
-    <a href="contact.html">Contact</a> <b>]</b>
+    <a class="s" href="contact.html">Contact</a><a class="f" href="contact.html#fun">Contact</a> <b>]</b>
   </td>
 </tr>
 
-<!-- ===================== SPONSOR BANNER (fake ads, all satire) ===================== -->
-<tr>
+<!-- ===================== SPONSOR BANNER (fake ads, all satire; fun mode only) ===================== -->
+<tr class="fun">
   <td class="adrow" colspan="3">
     <!-- Rotating 468x60 banner, pure CSS: the stack slides up one ad every 5 seconds.
          Every ad links to a certain music video. To add an ad, copy an <a class="ad"> block,
@@ -77,17 +79,18 @@
 <tr>
   <td class="footer" colspan="3">
     <hr>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="projects.html">Projects</a> |
-    <a href="news.html">News</a> |
+    <a class="s" href="index.html">Home</a><a class="f" href="index.html#fun">Home</a> |
+    <a class="s" href="about.html">About</a><a class="f" href="about.html#fun">About</a> |
+    <a class="s" href="projects.html">Projects</a><a class="f" href="projects.html#fun">Projects</a> |
+    <a class="s" href="news.html">News</a><a class="f" href="news.html#fun">News</a> |
     <a href="resume26.pdf">R&eacute;sum&eacute;</a> |
-    <a href="contact.html">Contact</a>
+    <a class="s" href="contact.html">Contact</a><a class="f" href="contact.html#fun">Contact</a>
     <br><br>
     <b>Last updated:</b> 11/02/26 &nbsp;|&nbsp; Questions? <a href="mailto:leexum@mit.edu">Email me</a>.
     <br>
-    Copyright &copy; 2026 Lee Marquez. This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.
-    <p class="buttons">
+    Copyright &copy; 2026 Lee Marquez. <span class="fun">This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.</span>
+    <br><a class="s toggle" href="#fun">Switch to fun mode</a><a class="f toggle" href="#">Switch to serious mode</a>
+    <p class="buttons fun">
       <!-- 88x31 buttons live in Images/buttons/. Add an <img> here to add one. -->
       <img src="Images/buttons/y2k.gif" alt="Y2K compliant" width="88" height="31">
       <img src="Images/buttons/nojs.gif" alt="100% JavaScript-free" width="88" height="31">

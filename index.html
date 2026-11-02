@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Fun mode anchor: index.html#fun turns the toys on. Serious is the default. See "modes" in style.css. -->
+<span id="fun"></span>
 <!-- Hidden switches for the toys. They live up here so the whole page can react to them
      (see "cross-toy easter eggs" in style.css). Order matters for the CSS: popup switches first, then launch. -->
 <!-- Which popup is showing: s1 Security Alert, s2 Are you sure, s3 Install Toolbar, s0 none. -->
@@ -39,22 +41,22 @@
 </tr>
 <tr>
   <td class="nav" colspan="3">
-    <b>[</b> <a href="index.html">Home</a> <b>|</b>
-    <a href="about.html">About</a> <b>|</b>
-    <a href="projects.html">Projects</a> <b>|</b>
-    <a href="news.html">News</a> <b>|</b>
+    <b>[</b> <a class="s" href="index.html">Home</a><a class="f" href="index.html#fun">Home</a> <b>|</b>
+    <a class="s" href="about.html">About</a><a class="f" href="about.html#fun">About</a> <b>|</b>
+    <a class="s" href="projects.html">Projects</a><a class="f" href="projects.html#fun">Projects</a> <b>|</b>
+    <a class="s" href="news.html">News</a><a class="f" href="news.html#fun">News</a> <b>|</b>
     <a href="resume26.pdf">R&eacute;sum&eacute;</a> <b>|</b>
-    <a href="contact.html">Contact</a> <b>]</b>
+    <a class="s" href="contact.html">Contact</a><a class="f" href="contact.html#fun">Contact</a> <b>]</b>
   </td>
 </tr>
 
 <!-- ===================== FAKE TOOLBAR (appears after "installing" it from the third popup) ===================== -->
 <tr class="toolbar tb-main">
   <td colspan="3">
-    <!-- Search shows results. "+13 more" adds a row of search bars. Weather jumps to the forecast. The blocker hides every popup. -->
+    <!-- Search shows results. "+13 more" adds a row of search bars. The blocker hides every popup. -->
     <b>TurboThrust Toolbar</b>
     <span class="tb-search"><input type="text" placeholder="Search the web"> <label for="tbsearch" class="tb-btn">Search</label></span>
-    <a href="#weather" class="tb-item">&#9728; 72&deg;F Long Beach</a>
+    <span class="tb-item">&#9728; 72&deg;F Long Beach</span>
     <label for="blocker" class="tb-item">Pop-up blocker: <b class="blk-off">OFF</b><b class="blk-on">ON</b></label>
     <label for="moresearch" class="tb-item tb-more"><span class="more-off">+13 more &raquo;</span><span class="more-on">&laquo; That's enough</span></label>
     <label for="tbclose" class="x tb-x" title="Remove toolbar">&times;</label>
@@ -66,7 +68,7 @@
     <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
     <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
     <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
-    <a href="#weather" class="tb-item">&#9728; 72&deg;F Long Beach</a>
+    <span class="tb-item">&#9728; 72&deg;F Long Beach</span>
   </td>
 </tr>
 <tr class="toolbar tb-results">
@@ -78,16 +80,16 @@
     <a href="https://ejgomez.com/">Some guy named Ernesto</a> &middot;
     <a href="https://sigmanu.mit.edu/">Sigma Nu at MIT</a><br>
     <b>Results:</b>
-    <a href="projects.html">Projects &amp; experience</a> &middot;
-    <a href="about.html">About Lee</a> &middot;
-    <a href="news.html">News</a> &middot;
-    <a href="contact.html">Contact</a>
-    &nbsp; Did you mean: <a href="projects.html"><i>rockets</i></a>?
+    <a href="projects.html#fun">Projects &amp; experience</a> &middot;
+    <a href="about.html#fun">About Lee</a> &middot;
+    <a href="news.html#fun">News</a> &middot;
+    <a href="contact.html#fun">Contact</a>
+    &nbsp; Did you mean: <a href="projects.html#fun"><i>rockets</i></a>?
   </td>
 </tr>
 
-<!-- ===================== TICKER ===================== -->
-<tr>
+<!-- ===================== TICKER (fun mode only) ===================== -->
+<tr class="fun">
   <td class="ticker" colspan="3">
     <!-- Scrolling headlines. Keep it to the newest two or three news items. -->
     <marquee scrollamount="3">
@@ -99,8 +101,8 @@
   </td>
 </tr>
 
-<!-- ===================== SPONSOR BANNER (fake ads, all satire) ===================== -->
-<tr>
+<!-- ===================== SPONSOR BANNER (fake ads, all satire; fun mode only) ===================== -->
+<tr class="fun">
   <td class="adrow" colspan="3">
     <!-- Rotating 468x60 banner, pure CSS: the stack slides up one ad every 5 seconds.
          Every ad links to a certain music video. To add an ad, copy an <a class="ad"> block,
@@ -136,16 +138,16 @@
     <div class="bar">stats</div>
     <b>5</b> projects listed<br>
     <b>2nd</b> year at MIT<br>
-    You are visitor number:<br>
+    <span class="fun">You are visitor number:<br>
     <!-- Live hit counter image from hits.sh; it counts every time the image loads. -->
-    <img class="counter" src="https://hits.sh/leeneptune.github.io.svg?label=visitors&amp;color=003399&amp;labelColor=cc0000&amp;style=flat-square" alt="hit counter">
+    <img class="counter" src="https://hits.sh/leeneptune.github.io.svg?label=visitors&amp;color=003399&amp;labelColor=cc0000&amp;style=flat-square" alt="hit counter"></span>
 
-    <p class="badge"><img src="Images/underconstruction.gif" alt="Under construction" width="160" height="40"></p>
+    <p class="badge fun"><img src="Images/underconstruction.gif" alt="Under construction" width="160" height="40"></p>
 
-    <div class="bar">sponsors</div>
+    <div class="bar fun">sponsors</div>
     <!-- Fake 120x60 button ads. Satire. They go to a certain music video. -->
-    <a class="sponsor sp1" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">ROCKET FUEL&trade;<br>ENERGY DRINK<br><small>It's literally rocket fuel. Do not drink.</small></a>
-    <a class="sponsor sp2" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">BUY A STAR!<br><small>Name it after yourself. Pluto sold separately. Planet status not guaranteed.</small></a>
+    <a class="sponsor sp1 fun" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">ROCKET FUEL&trade;<br>ENERGY DRINK<br><small>It's literally rocket fuel. Do not drink.</small></a>
+    <a class="sponsor sp2 fun" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">BUY A STAR!<br><small>Name it after yourself. Pluto sold separately. Planet status not guaranteed.</small></a>
 
     <div class="bar">bookmarks</div>
     <!-- Template: <a href="#">Name</a><br> -->
@@ -170,7 +172,7 @@
     <img class="photo" src="Images/portrait.gif" alt="Portrait of Lee Marquez" width="100" align="left">
     <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. I work on aircraft,
     rockets, and autonomous systems, and I'm originally from Long Beach, CA.</p>
-    <p class="more"><a href="about.html">Read more about me &raquo;</a></p>
+    <p class="more"><a class="s" href="about.html">Read more about me &raquo;</a><a class="f" href="about.html#fun">Read more about me &raquo;</a></p>
     <br clear="all">
 
     <div class="bar">projects &amp; experience</div>
@@ -195,10 +197,10 @@
       <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
     </dl>
     <p>Launch footage and project videos are on <a href="https://www.youtube.com/@leemarquez8995">my YouTube channel</a>.</p>
-    <p class="more"><a href="projects.html">Details and roles &raquo;</a></p>
+    <p class="more"><a class="s" href="projects.html">Details and roles &raquo;</a><a class="f" href="projects.html#fun">Details and roles &raquo;</a></p>
 
-    <!-- Two toy boxes side by side. Both are checkbox + CSS tricks, no scripts. -->
-    <table class="toys" width="100%" cellspacing="0" cellpadding="0">
+    <!-- Two toy boxes side by side. Both are checkbox + CSS tricks, no scripts. Fun mode only. -->
+    <table class="toys fun" width="100%" cellspacing="0" cellpadding="0">
     <tr valign="top">
       <td width="50%">
         <div class="bar">who's that pok&eacute;mon?</div>
@@ -274,7 +276,7 @@
       <li><b>09/15/26</b><br>Joined the REALM Lab as a UROP.</li>
       <li><b>09/01/26</b><br>Started sophomore year at MIT.</li>
     </ul>
-    <p class="more"><a href="news.html">All news &raquo;</a></p>
+    <p class="more"><a class="s" href="news.html">All news &raquo;</a><a class="f" href="news.html#fun">All news &raquo;</a></p>
 
     <div class="bar">cool stuff</div>
     <!-- One <p> per item. Add or remove lines freely. -->
@@ -369,17 +371,18 @@
 <tr>
   <td class="footer" colspan="3">
     <hr>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="projects.html">Projects</a> |
-    <a href="news.html">News</a> |
+    <a class="s" href="index.html">Home</a><a class="f" href="index.html#fun">Home</a> |
+    <a class="s" href="about.html">About</a><a class="f" href="about.html#fun">About</a> |
+    <a class="s" href="projects.html">Projects</a><a class="f" href="projects.html#fun">Projects</a> |
+    <a class="s" href="news.html">News</a><a class="f" href="news.html#fun">News</a> |
     <a href="resume26.pdf">R&eacute;sum&eacute;</a> |
-    <a href="contact.html">Contact</a>
+    <a class="s" href="contact.html">Contact</a><a class="f" href="contact.html#fun">Contact</a>
     <br><br>
     <b>Last updated:</b> 11/02/26 &nbsp;|&nbsp; Questions? <a href="mailto:leexum@mit.edu">Email me</a>.
     <br>
-    Copyright &copy; 2026 Lee Marquez. This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.
-    <p class="buttons">
+    Copyright &copy; 2026 Lee Marquez. <span class="fun">This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.</span>
+    <br><a class="s toggle" href="#fun">Switch to fun mode</a><a class="f toggle" href="#">Switch to serious mode</a>
+    <p class="buttons fun">
       <!-- 88x31 buttons live in Images/buttons/. Add an <img> here to add one. -->
       <img src="Images/buttons/y2k.gif" alt="Y2K compliant" width="88" height="31">
       <img src="Images/buttons/nojs.gif" alt="100% JavaScript-free" width="88" height="31">

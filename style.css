@@ -336,7 +336,7 @@ tr.toolbar { display: none; }
 tr.toolbar td { background: #c0c0c0; border-bottom: 1px solid #003399; padding: 3px 6px; font-size: 10px; line-height: 2; }
 tr.toolbar b { color: #000080; }
 .tb-search input { width: 90px; font: 10px Verdana, Arial, sans-serif; border: 1px inset #808080; background: #ffffff; padding: 1px 2px; margin-left: 6px; }
-.tb-btn, .tb-item, a.tb-item:link, a.tb-item:visited { display: inline-block; border: 2px outset #ffffff; background: #c0c0c0; color: #000000; padding: 0 5px; margin-left: 4px; cursor: pointer; text-decoration: none; }
+.tb-btn, .tb-item { display: inline-block; border: 2px outset #ffffff; background: #c0c0c0; color: #000000; padding: 0 5px; margin-left: 4px; cursor: pointer; text-decoration: none; }
 .tb-btn:active, .tb-item:active { border-style: inset; }
 /* The toolbar's own switches (#tbsearch, #moresearch, #blocker) sit at the top of <body> too. */
 .more-on, .blk-on { display: none; }
@@ -369,3 +369,15 @@ tr.tb-results td { background: #ffffff; line-height: 1.6; }
 
 /* Toolbar x: removes every toolbar row, including the extras and results. Last so it wins. */
 #tbclose:checked ~ table.page tr.toolbar { display: none; }
+
+/* ---- Modes. Serious is the default. index.html#fun (the #fun span at the top of <body>) turns the toys on.
+   .fun = fun-only element. .s / .f = twin links for serious / fun mode so the nav keeps you in the mode you're in.
+   These sit last so they outrank every show rule above. ---- */
+.f { display: none; }
+#fun:target ~ table.page .f { display: inline; }
+#fun:target ~ table.page .s { display: none; }
+#fun:not(:target) ~ table.page .fun,
+#fun:not(:target) ~ table.page .popup,
+#fun:not(:target) ~ table.page tr.toolbar { display: none; }
+#fun:not(:target) ~ .flyer { display: none; }
+.toggle, .toggle:link, .toggle:visited { color: #999999; font-size: 9px; }
