@@ -380,4 +380,9 @@ tr.tb-results td { background: #ffffff; line-height: 1.6; }
 #fun:not(:target) ~ table.page .popup,
 #fun:not(:target) ~ table.page tr.toolbar { display: none; }
 #fun:not(:target) ~ .flyer { display: none; }
-.toggle, .toggle:link, .toggle:visited { color: #999999; font-size: 9px; }
+/* Mode switch button in the header. */
+.modes { float: right; margin: 10px 4px 0 8px; }
+.toggle, .toggle:link, .toggle:visited { display: inline-block; padding: 3px 10px; background: #cc0000; color: #ffffff; font-weight: bold; font-size: 11px; border: 2px outset #ff6666; text-decoration: none; }
+.toggle:active { border-style: inset; }
+.f.toggle, .f.toggle:link, .f.toggle:visited { display: none; background: #003399; border-color: #6699ff; }
+#fun:target ~ table.page .f.toggle { display: inline-block; }
