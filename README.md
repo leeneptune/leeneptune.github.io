@@ -9,7 +9,13 @@ my website :P
 - **Add a fake ad:** copy an `<a class="ad">` in the banner block (it's in every page), add an `adN` style, and bump the three AD COUNT numbers in `style.css`.
 - The header, nav, and footer are copied into every page, so a nav change means editing all six HTML files.
 
-## Easter eggs (index.html, all CSS, no scripts)
+## Fun mode
+
+The site is serious by default: no ads, popups, toys, ticker, or counter. Add `#fun` to the URL
+(`leeneptune.github.io/#fun`, or the "Switch to fun mode" link in the footer) to turn all of that on. The nav
+links keep you in whichever mode you're in. Anything marked `class="fun"` in the HTML only shows in fun mode.
+
+## Easter eggs (fun mode, all CSS, no scripts)
 
 The toys share hidden checkboxes at the top of `<body>`, so they can react to each other:
 
