@@ -5,55 +5,390 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lee Marquez, aerospace engineering student.">
   <title>Lee Marquez's Home Page</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
-<!-- The body of the page contains a main section with an about section and a projects and experience section. -->
 <body>
-  <main>
-    <header>
-      <h1>Welcome to Lee Marquez's Home Page! (WIP)</h1>
-      <p><em>AeroAstro @ MIT</em></p>
-    </header>
-    <section aria-labelledby="about-title">
-      <hr>
-      <h2 id="about-title">ABOUT</h2>
-      
-      <div class="about">
-        <img class="about-photo" src="Images/NASAlogo.jpg" alt="NASA logo, temporary placeholder for my portrait" width="180">
-        <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. At MIT, I'm involved in undergraduate research at the REALM Lab, Design/Build/Fly, and the Rocket Team. I enjoy working on aircraft, rockets, and autonomous systems. In my free time, I like to swim, play intermural soccer, and learn languages.</p>
+<!-- Hidden switches for the toys. They live up here so the whole page can react to them
+     (see "cross-toy easter eggs" in style.css). Order matters for the CSS: popup switches first, then launch. -->
+<!-- Which popup is showing: s1 Security Alert, s2 Are you sure, s3 Install Toolbar, s0 none. -->
+<input type="radio" name="stage" id="s1" checked autocomplete="off">
+<input type="radio" name="stage" id="s2" autocomplete="off">
+<input type="radio" name="stage" id="s3" autocomplete="off">
+<input type="radio" name="stage" id="s0" autocomplete="off">
+<input type="checkbox" id="install" autocomplete="off">
+<input type="checkbox" id="tbclose" autocomplete="off">
+<input type="checkbox" id="tbsearch" autocomplete="off">
+<input type="checkbox" id="moresearch" autocomplete="off">
+<input type="checkbox" id="blocker" autocomplete="off">
+<input type="radio" name="pop" id="pop0" checked autocomplete="off">
+<input type="radio" name="pop" id="popscan" autocomplete="off">
+<input type="radio" name="pop" id="popremind" autocomplete="off">
+<input type="radio" name="pop" id="popcancel" autocomplete="off">
+<input type="checkbox" id="launch" autocomplete="off">
+<!-- Hidden until liftoff, then streaks across the whole page. -->
+<img class="flyer" src="Images/rocket.gif" alt="" width="32" height="72">
+
+<!-- ===================== HEADER (same on every page) ===================== -->
+<table class="page" width="100%" cellspacing="0" cellpadding="4">
+<tr>
+  <td class="logo" colspan="3">
+    <a class="sitename" href="index.html">Lee Marquez's <span class="alt">Home Page</span></a>
+    <span class="tagline">&raquo; AeroAstro @ MIT</span>
+  </td>
+</tr>
+<tr>
+  <td class="nav" colspan="3">
+    <b>[</b> <a href="index.html">Home</a> <b>|</b>
+    <a href="about.html">About</a> <b>|</b>
+    <a href="projects.html">Projects</a> <b>|</b>
+    <a href="news.html">News</a> <b>|</b>
+    <a href="resume26.pdf">R&eacute;sum&eacute;</a> <b>|</b>
+    <a href="contact.html">Contact</a> <b>]</b>
+  </td>
+</tr>
+
+<!-- ===================== FAKE TOOLBAR (appears after "installing" it from the third popup) ===================== -->
+<tr class="toolbar tb-main">
+  <td colspan="3">
+    <!-- Search shows results. "+13 more" adds a row of search bars. Weather jumps to the forecast. The blocker hides every popup. -->
+    <b>TurboThrust Toolbar</b>
+    <span class="tb-search"><input type="text" placeholder="Search the web"> <label for="tbsearch" class="tb-btn">Search</label></span>
+    <a href="#weather" class="tb-item">&#9728; 72&deg;F Long Beach</a>
+    <label for="blocker" class="tb-item">Pop-up blocker: <b class="blk-off">OFF</b><b class="blk-on">ON</b></label>
+    <label for="moresearch" class="tb-item tb-more"><span class="more-off">+13 more &raquo;</span><span class="more-on">&laquo; That's enough</span></label>
+    <label for="tbclose" class="x tb-x" title="Remove toolbar">&times;</label>
+  </td>
+</tr>
+<!-- The "+13 more": twelve search bars and a second weather widget. -->
+<tr class="toolbar tb-extra">
+  <td colspan="3">
+    <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
+    <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
+    <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search"> <input type="text" placeholder="Search">
+    <a href="#weather" class="tb-item">&#9728; 72&deg;F Long Beach</a>
+  </td>
+</tr>
+<tr class="toolbar tb-results">
+  <td colspan="3">
+    <b>Sponsored:</b>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Claim your FREE ROCKET</a> &middot;
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Download More Thrust</a> &middot;
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Hot satellites in your orbit</a> &middot;
+    <a href="https://ejgomez.com/">Some guy named Ernesto</a> &middot;
+    <a href="https://sigmanu.mit.edu/">Sigma Nu at MIT</a><br>
+    <b>Results:</b>
+    <a href="projects.html">Projects &amp; experience</a> &middot;
+    <a href="about.html">About Lee</a> &middot;
+    <a href="news.html">News</a> &middot;
+    <a href="contact.html">Contact</a>
+    &nbsp; Did you mean: <a href="projects.html"><i>rockets</i></a>?
+  </td>
+</tr>
+
+<!-- ===================== TICKER ===================== -->
+<tr>
+  <td class="ticker" colspan="3">
+    <!-- Scrolling headlines. Keep it to the newest two or three news items. -->
+    <marquee scrollamount="3">
+      <span class="onlaunch"><b class="breaking">&raquo; BREAKING:</b> A rocket has launched from this page. Officials ask that you watch it on YouTube. &nbsp;&nbsp;&nbsp;</span>
+      <b>&raquo; 11/02/26:</b> Site goes live! &nbsp;&nbsp;&nbsp;
+      <b>&raquo; 09/15/26:</b> Joined the REALM Lab as a UROP. &nbsp;&nbsp;&nbsp;
+      <b>&raquo;</b> Welcome to my home page. Sign in, look around, and come back soon!
+    </marquee>
+  </td>
+</tr>
+
+<!-- ===================== SPONSOR BANNER (fake ads, all satire) ===================== -->
+<tr>
+  <td class="adrow" colspan="3">
+    <!-- Rotating 468x60 banner, pure CSS: the stack slides up one ad every 5 seconds.
+         Every ad links to a certain music video. To add an ad, copy an <a class="ad"> block,
+         give it a new adN class in style.css, and update the three numbers marked AD COUNT. -->
+    <div class="banner">
+      <div class="adstack">
+        <a class="ad ad1" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="You did not win"><big><span class="blink">CONGRATULATIONS!!!</span></big>You are the 1,000,000th visitor! Click here to claim your FREE ROCKET<small>*rocket not included. Offer void above the K&aacute;rm&aacute;n line.</small></a>
+        <a class="ad ad2" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Not medical advice"><big>Tired of GRAVITY?</big>Ask your doctor about ESCAPE VELOCITY&trade;<small>Side effects may include leaving Earth. 11.2 km/s. Results may vary.</small></a>
+        <a class="ad ad3" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Delta-v charges may apply"><big><span class="blink">HOT SATELLITES</span> IN YOUR ORBIT</big>want to RENDEZVOUS with you tonight!<small>Must be 18+ and within 400 km. Delta-v charges may apply.</small></a>
+        <a class="ad ad4" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="It does not work like that"><big>DOWNLOAD MORE THRUST</big>Only $19.99/month. No hardware required!<small>Compatible with Windows 98 and Saturn V.</small></a>
+        <a class="ad ad5" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Splash"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" alt="" width="48" height="48"><big><span class="blink">PUNCH THE MAGIKARP</span></big>and WIN a SHINY AMPHAROS!<small>Magikarp used Splash. Nothing happened. 1 in 8192 odds.</small></a>
+        <!-- This one only shows up after the launch pad fires. -->
+        <a class="ad ad7 onlaunch" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Too late"><big><span class="blink">WAS THAT YOUR ROCKET?!</span></big>Call 1-800-SPLASHDOWN for ROCKET INSURANCE<small>Coverage begins one (1) business day after liftoff.</small></a>
+        <a class="ad ad6" href="https://ejgomez.com/mancala/" title="A real link, for once"><big>PLAY MANCALA ONLINE!</big>100% FREE and 100% AD-FREE<small>This is an ad. Seeds not included. ejgomez.com/mancala</small></a>
       </div>
-    </section>
-    <section aria-labelledby="projects-title">
-      <hr>
-      <h2 id="projects-title">PROJECTS AND EXPERIENCE</h2>
-      <!-- Temporary highlights from my résumé; links go to the teams and programs. -->
-      <dl class="projects">
-        <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a></dt>
-        <dd>Undergraduate research on vision-language models for robot navigation.</dd>
+    </div>
+    <span class="adlabel">advertisement</span>
+  </td>
+</tr>
 
-        <dt><a href="https://web.mit.edu/dbf/www/">MIT Design/Build/Fly</a></dt>
-        <dd>Aerodynamics subteam member working on competition aircraft design.</dd>
+<!-- ===================== BODY: 3 COLUMNS ===================== -->
+<tr valign="top">
 
-        <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
-        <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
+  <!-- ---------- LEFT COLUMN ---------- -->
+  <td class="left" width="160">
+    <div class="bar">links</div>
+    <a href="mailto:leexum@mit.edu">Email</a><br>
+    <a href="resume26.pdf">R&eacute;sum&eacute; (PDF)</a><br>
+    <a href="https://github.com/leeneptune">GitHub</a><br>
+    <a href="https://www.linkedin.com/in/leemarquez/">LinkedIn</a><br>
+    <a href="https://www.youtube.com/@leemarquez8995">YouTube</a> <span class="new">NEW!</span><br>
 
-        <dt><a href="https://www.nasa.gov/learning-resources/nasa-student-launch/">NASA Student Launch Initiative</a></dt>
-        <dd>Co-captain and former safety officer; led a team of eight in high-power rocketry and payload research.</dd>
+    <div class="bar">stats</div>
+    <b>5</b> projects listed<br>
+    <b>2nd</b> year at MIT<br>
+    You are visitor number:<br>
+    <!-- Live hit counter image from hits.sh; it counts every time the image loads. -->
+    <img class="counter" src="https://hits.sh/leeneptune.github.io.svg?label=visitors&amp;color=003399&amp;labelColor=cc0000&amp;style=flat-square" alt="hit counter">
 
-        <dt><a href="https://www.rocketrychallenge.org/">American Rocketry Challenge</a></dt>
-        <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
+    <p class="badge"><img src="Images/underconstruction.gif" alt="Under construction" width="160" height="40"></p>
 
-      </dl>
-      <hr>
-    </section>
-  </main>
-  <footer>
-    <p>
-      [ <a href="mailto:leexum@mit.edu">EMAIL</a> |
-      <a href="resume26.pdf">RÉSUMÉ</a> |
-      <a href="https://github.com/leeneptune">GITHUB</a> |
-      <a href="https://www.linkedin.com/in/leemarquez/">LINKEDIN</a> ]
+    <div class="bar">sponsors</div>
+    <!-- Fake 120x60 button ads. Satire. They go to a certain music video. -->
+    <a class="sponsor sp1" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">ROCKET FUEL&trade;<br>ENERGY DRINK<br><small>It's literally rocket fuel. Do not drink.</small></a>
+    <a class="sponsor sp2" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">BUY A STAR!<br><small>Name it after yourself. Pluto sold separately. Planet status not guaranteed.</small></a>
+
+    <div class="bar">bookmarks</div>
+    <!-- Template: <a href="#">Name</a><br> -->
+    <a href="https://aeroastro.mit.edu/">MIT AeroAstro</a><br>
+    <a href="https://www.nasa.gov/">NASA</a><br>
+    <a href="https://www.jpl.nasa.gov/">NASA JPL</a><br>
+    <a href="https://shpe.org/">SHPE</a><br>
+    <a href="https://bulbapedia.bulbagarden.net/">Bulbapedia</a><br>
+    <a href="https://www.aiaa.org/">AIAA</a><br>
+    <a href="https://arxiv.org/list/cs.RO/recent">arXiv robotics</a><br>
+    <a href="https://www.nar.org/">Natl. Assoc. of Rocketry</a><br>
+
+    <div class="bar">neptune</div>
+    <!-- Voyager 2's full-disk portrait of Neptune, 1989, from the NASA image library (PIA01492). -->
+    <p class="live"><img src="https://images-assets.nasa.gov/image/PIA01492/PIA01492~small.jpg" alt="Neptune photographed by Voyager 2 in 1989" width="150" height="150"><br>
+    Voyager 2, August 1989. Still the only close-up visit. <a href="https://images.nasa.gov/details/PIA01492">NASA</a></p>
+  </td>
+
+  <!-- ---------- CENTER COLUMN ---------- -->
+  <td class="center">
+    <div class="bar">about</div>
+    <img class="photo" src="Images/portrait.gif" alt="Portrait of Lee Marquez" width="100" align="left">
+    <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. I work on aircraft,
+    rockets, and autonomous systems, and I'm originally from Long Beach, CA.</p>
+    <p class="more"><a href="about.html">Read more about me &raquo;</a></p>
+    <br clear="all">
+
+    <div class="bar">projects &amp; experience</div>
+    <!-- Template:
+      <dt><a href="#">Name</a></dt>
+      <dd>One-line description.</dd>
+    -->
+    <dl class="projects">
+      <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a> <span class="new">NEW!</span></dt>
+      <dd>Undergraduate research on vision-language models for robot navigation.</dd>
+
+      <dt><a href="https://web.mit.edu/dbf/www/">MIT Design/Build/Fly</a></dt>
+      <dd>Aerodynamics subteam member working on competition aircraft design.</dd>
+
+      <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
+      <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
+
+      <dt><a href="https://www.nasa.gov/learning-resources/nasa-student-launch/">NASA Student Launch Initiative</a></dt>
+      <dd>Co-captain and former safety officer; led a team of eight in high-power rocketry and payload research.</dd>
+
+      <dt><a href="https://www.rocketrychallenge.org/">American Rocketry Challenge</a></dt>
+      <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
+    </dl>
+    <p>Launch footage and project videos are on <a href="https://www.youtube.com/@leemarquez8995">my YouTube channel</a>.</p>
+    <p class="more"><a href="projects.html">Details and roles &raquo;</a></p>
+
+    <!-- Two toy boxes side by side. Both are checkbox + CSS tricks, no scripts. -->
+    <table class="toys" width="100%" cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td width="50%">
+        <div class="bar">who's that pok&eacute;mon?</div>
+        <!-- The reel shuffles through these silhouettes; clicking freezes one and reveals it.
+             To add a Pokemon, copy a <span class="mon"> line and update the three numbers in style.css marked REEL COUNT. -->
+        <div class="wtp">
+          <!-- Three states, one radio each: 0 shuffling, 1 stopped, 2 revealed. Each click advances to the next. -->
+          <input type="radio" name="wtp" id="wtp0" checked autocomplete="off">
+          <input type="radio" name="wtp" id="wtp1" autocomplete="off">
+          <input type="radio" name="wtp" id="wtp2" autocomplete="off">
+          <div class="wtp-box">
+            <span class="reel">
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="" width="96" height="96"><br><b>It's Bulbasaur!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="" width="96" height="96"><br><b>It's Charmander!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="" width="96" height="96"><br><b>It's Charizard!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="" width="96" height="96"><br><b>It's Squirtle!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="" width="96" height="96"><br><b>It's Pikachu!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png" alt="" width="96" height="96"><br><b>It's Jigglypuff!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png" alt="" width="96" height="96"><br><b>It's Meowth!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png" alt="" width="96" height="96"><br><b>It's Psyduck!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="" width="96" height="96"><br><b>It's Gengar!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" alt="" width="96" height="96"><br><b>It's Magikarp!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png" alt="" width="96" height="96"><br><b>It's Gyarados!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png" alt="" width="96" height="96"><br><b>It's Lapras!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="" width="96" height="96"><br><b>It's Eevee!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="" width="96" height="96"><br><b>It's Snorlax!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png" alt="" width="96" height="96"><br><b>It's Dragonite!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="" width="96" height="96"><br><b>It's Mewtwo!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="" width="96" height="96"><br><b>It's Mew!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png" alt="" width="96" height="96"><br><b>It's Cyndaquil!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png" alt="" width="96" height="96"><br><b>It's Totodile!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/179.png" alt="" width="96" height="96"><br><b>It's Mareep!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png" alt="" width="96" height="96"><br><b>It's Espeon!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png" alt="" width="96" height="96"><br><b>It's Umbreon!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png" alt="" width="96" height="96"><br><b>It's Tyranitar!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/249.png" alt="" width="96" height="96"><br><b>It's Lugia!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png" alt="" width="96" height="96"><br><b>It's Ho-Oh!</b></span>
+            </span>
+            <label for="wtp1" class="wl wl1" title="Click to stop"></label>
+            <label for="wtp2" class="wl wl2" title="Click to reveal"></label>
+            <label for="wtp0" class="wl wl0" title="Click to shuffle again"></label>
+          </div>
+          <p class="wtp-hint h0">Click to stop the shuffle.</p>
+          <p class="wtp-hint h1">Who is it? Click to reveal.</p>
+          <p class="wtp-hint h2">Click again to shuffle.</p>
+        </div>
+      </td>
+      <td width="50%">
+        <div class="bar">launch pad</div>
+        <div class="launch">
+          <div class="pad">
+            <span class="stars"></span>
+            <span class="smoke"></span>
+            <span class="count"></span>
+            <img class="rocket" src="Images/rocket.gif" alt="Rocket" width="16" height="36">
+            <span class="ground"></span>
+            <!-- Appears after liftoff. -->
+            <a class="watch" href="https://www.youtube.com/@leemarquez8995">Watch the real launches<br>on YouTube &raquo;</a>
+          </div>
+          <label for="launch" class="btn"></label>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </td>
+
+  <!-- ---------- RIGHT COLUMN ---------- -->
+  <td class="right" width="180">
+    <div class="bar">news</div>
+    <!-- Latest three only. Full history lives on news.html. Template: <li><b>MM/DD/YY</b><br>Text.</li> -->
+    <ul class="news">
+      <li><b>11/02/26</b><br>Site goes live. Still a work in progress! <span class="new">NEW!</span></li>
+      <li><b>09/15/26</b><br>Joined the REALM Lab as a UROP.</li>
+      <li><b>09/01/26</b><br>Started sophomore year at MIT.</li>
+    </ul>
+    <p class="more"><a href="news.html">All news &raquo;</a></p>
+
+    <div class="bar">cool stuff</div>
+    <!-- One <p> per item. Add or remove lines freely. -->
+    <p>Currently reading: <i>Slaughterhouse-Five</i> by Kurt Vonnegut.</p>
+    <p>Learning: Spanish, Chinese, and Portuguese.</p>
+    <!-- Sprite comes from the PokeAPI sprite repo. Change the number at the end of the URL to change the Pokemon (181 = Ampharos). -->
+    <p><img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png" alt="Ampharos sprite" width="48" height="48" align="left">Favorite Pok&eacute;mon: Ampharos.<br clear="all"></p>
+
+    <div class="bar">quote</div>
+    <p class="quote">&ldquo;Earth is the cradle of humanity, but one cannot live in a cradle forever.&rdquo;</p>
+    <p class="quote">&ndash; Konstantin Tsiolkovsky, 1911</p>
+
+    <div class="bar">so cal radar</div>
+    <!-- Live radar loop from the National Weather Service, Santa Ana Mountains site (KSOX). -->
+    <p class="live"><img src="https://radar.weather.gov/ridge/standard/KSOX_0.gif" alt="Live weather radar for Southern California" width="170" height="156"><br>
+    <a href="https://radar.weather.gov/station/KSOX/standard">NWS radar</a></p>
+
+    <!-- Fake Windows 95 popups. The stage radios (#s1 #s2 #s3 #s0) and the body radios (#pop0 #popscan #popremind #popcancel)
+         are at the top of <body>. The x on each popup moves to the next stage: alert, are you sure, toolbar, then none.
+         Installing from the third (#install) adds the toolbar under the nav; closing the finished install reopens this one.
+         The scan never finishes. The reminder fires when the launch pad toy's #launch box is checked. -->
+    <div class="popup popup1">
+      <div class="title"><label for="s2" class="x x1" title="Close">&times;</label><label for="s0" class="x x2" title="Close">&times;</label>&#9888; Security Alert</div>
+
+      <div class="body b0">
+        <b>WARNING!</b> Your rocket may be infected with <b class="blink">3 VIRUSES!</b><br>
+        Scan now? Estimated time: 4 eons.
+        <div class="buttons95"><label for="popscan">Scan Now</label> <label for="popremind">Remind me in orbit</label></div>
+      </div>
+
+      <div class="body bscan">
+        Scanning <span class="scanpart"></span><br>
+        <div class="progress"><span class="fill"></span></div>
+        <span class="pct"></span> complete<br>Threats found: <b class="threats"></b><br>
+        <small>Time remaining: <span class="eta"></span></small>
+        <div class="buttons95"><label for="popcancel">Cancel</label></div>
+      </div>
+
+      <div class="body bcancel">
+        <b>Scan cancelled.</b> <b class="blink">3 VIRUSES</b> remain on your rocket. Would you like to try again?
+        <div class="buttons95"><label for="popscan">Scan Now</label> <label for="popremind">Remind me in orbit</label></div>
+      </div>
+
+      <div class="body bremind">
+        <span class="orbit0">Reminder set. We'll check back when you reach orbit.<br>
+        Current altitude: 0 km. <span class="blink">Waiting...</span><br>
+        <small>Hint: there is a launch pad on this page.</small></span>
+        <span class="orbit1"><b>You are in orbit!</b> Your rocket <b>still</b> has <b class="blink">3 VIRUSES!</b> They came with you.
+        <div class="buttons95"><label for="popscan">Scan Now</label></div></span>
+      </div>
+    </div>
+
+    <!-- Second popup. "Go back" returns to the alert; x and "I'm sure" go on to the toolbar offer. -->
+    <div class="popup popup2">
+      <div class="title"><label for="s3" class="x" title="Close">&times;</label>&#9888; Are you sure?</div>
+      <div class="body b2">
+        Closing that window may leave your rocket unprotected.<br>
+        <b class="blink">3 VIRUSES</b> remain.
+        <div class="buttons95"><label for="s1">Go back</label> <label for="s3">I'm sure</label></div>
+      </div>
+    </div>
+
+    <!-- Third popup. Its x ends the chain. Install (#install) runs a fake 4-second install, then the toolbar
+         appears. Close on the finished install brings the alert back, whose x then just closes it (s0). -->
+    <div class="popup popup3">
+      <div class="title"><label for="s0" class="x" title="Close">&times;</label>&#9881; <span class="t-ask">Install Toolbar?</span><span class="t-inst">TurboThrust Setup</span></div>
+      <div class="body b2">
+        Install the <b>TurboThrust Toolbar</b>? Includes a search bar, a weather widget, and 13 more.
+        <div class="buttons95"><label for="install">Install</label> <label for="install">Install</label></div>
+      </div>
+      <div class="body b-install">
+        <span class="inst-status"></span>
+        <div class="progress"><span class="fill inst-fill"></span></div>
+        <span class="inst-pct"></span> complete
+        <div class="buttons95"><label for="s1" class="inst-close">Close</label></div>
+      </div>
+    </div>
+  </td>
+
+</tr>
+
+<!-- ===================== WEATHER STRIP ===================== -->
+<tr>
+  <td class="weather" colspan="3" id="weather">
+    <div class="bar">long beach, ca weather</div>
+    <!-- 7-day forecast image from 7timer.info. Change lat/lon in the URL to move it. -->
+    <img src="https://www.7timer.info/bin/civillight.php?lon=-118.19&amp;lat=33.77&amp;ac=0&amp;lang=en&amp;unit=british&amp;output=internal&amp;tzshift=0" alt="7-day weather forecast for Long Beach, CA" width="500" height="120">
+  </td>
+</tr>
+
+<!-- ===================== FOOTER (same on every page) ===================== -->
+<tr>
+  <td class="footer" colspan="3">
+    <hr>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="news.html">News</a> |
+    <a href="resume26.pdf">R&eacute;sum&eacute;</a> |
+    <a href="contact.html">Contact</a>
+    <br><br>
+    <b>Last updated:</b> 11/02/26 &nbsp;|&nbsp; Questions? <a href="mailto:leexum@mit.edu">Email me</a>.
+    <br>
+    Copyright &copy; 2026 Lee Marquez. This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.
+    <p class="buttons">
+      <!-- 88x31 buttons live in Images/buttons/. Add an <img> here to add one. -->
+      <img src="Images/buttons/y2k.gif" alt="Y2K compliant" width="88" height="31">
+      <img src="Images/buttons/nojs.gif" alt="100% JavaScript-free" width="88" height="31">
+      <img src="Images/buttons/html.gif" alt="Valid HTML" width="88" height="31">
+      <a href="https://aeroastro.mit.edu/"><img src="Images/buttons/aeroastro.gif" alt="MIT AeroAstro" width="88" height="31"></a>
     </p>
-  </footer>
+  </td>
+</tr>
+</table>
+
 </body>
 </html>
