@@ -88,8 +88,16 @@ td.footer hr { border: 0; border-top: 1px solid #003399; }
 
 /* Phones: stack the three columns. */
 @media (max-width: 600px) {
-  table.page, table.page tr, table.page td { display: block; width: auto; }
+  table.page, table.page tbody, table.page tr, table.page td { display: block; width: auto; }
   td.left, td.right { border: 0; }
+  /* The stacking rule above would un-hide the toolbar rows; keep them hidden until their switches say otherwise. */
+  table.page tr.toolbar { display: none; }
+  /* Popups float over the page like real ones instead of sitting at the bottom of the stacked columns. */
+  .popup { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 50; margin: 0; box-shadow: 0 0 0 2px #000000; }
+  /* Banner ad text at phone width. */
+  .ad { font-size: 10px; padding: 4px 6px; }
+  .ad big { font-size: 13px; }
+  .ad small { font-size: 7px; }
 }
 
 /* 404 page */
