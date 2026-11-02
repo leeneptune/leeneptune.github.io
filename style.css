@@ -251,7 +251,7 @@ td.left .sponsor::before { content: none; }
 #s0, #s1, #s2, #s3, #tbclose, #install, #tbsearch, #moresearch, #blocker, #pop0, #popscan, #popremind, #popcancel { display: none; }
 .popup { display: none; }
 #s1:checked ~ table.page .popup1, #s2:checked ~ table.page .popup2, #s3:checked ~ table.page .popup3 { display: block; }
-.popup { background: #c0c0c0; border: 2px outset #ffffff; margin: 0 0 10px; font-size: 11px; color: #000000; }
+.popup { background: #c0c0c0; border: 2px outset #ffffff; margin: 10px 0 0; font-size: 11px; color: #000000; }
 .popup .title { background: #000080; color: #ffffff; font-weight: bold; padding: 2px 4px; }
 .popup .x { float: right; width: 14px; height: 13px; line-height: 12px; text-align: center; background: #c0c0c0; color: #000000;
   border: 1px outset #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 11px; cursor: pointer; }
