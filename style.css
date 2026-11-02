@@ -94,3 +94,116 @@ td.footer hr { border: 0; border-top: 1px solid #003399; }
 
 /* 404 page */
 .big { font-size: 14px; }
+
+/* Scrolling ticker under the nav */
+td.ticker { background: #ffffcc; border-bottom: 1px solid #003399; padding: 2px 4px; font-size: 11px; }
+td.ticker marquee { width: 100%; }
+
+/* Under construction badge */
+.badge { text-align: center; margin: 10px 0 4px; }
+
+/* Pokemon sprite */
+.sprite { margin: -8px 4px 0 0; image-rendering: pixelated; }
+
+/* 88x31 buttons in the footer */
+.buttons { margin: 8px 0 0; }
+.buttons img { margin: 0 2px; vertical-align: middle; border: 0; }
+
+/* Live images in the sidebars */
+.live { text-align: center; font-size: 10px; margin: 4px 0 8px; }
+.live img { border: 1px solid #000000; max-width: 100%; height: auto; }
+
+/* Quote box */
+.quote { font-style: italic; margin: 4px 0; }
+
+/* ---- Toy boxes (checkbox + CSS, no scripts) ---- */
+table.toys td { padding: 0 4px; }
+table.toys td:first-child { padding-left: 0; }
+table.toys td:last-child { padding-right: 0; }
+
+/* Who's that Pokemon: three radio states (shuffle / stopped / revealed), one click each. */
+.wtp { text-align: center; }
+.wtp input { display: none; }
+.wtp-box { position: relative; width: 96px; height: 130px; margin: 0 auto; overflow: hidden; }
+/* REEL COUNT: width = 96 x N, steps(N), translateX(-96 x N). N = 25 now. */
+.reel { display: block; white-space: nowrap; width: 2400px; font-size: 0; animation: shuffle 12.5s steps(25, end) infinite; }
+.mon { display: inline-block; width: 96px; height: 130px; white-space: normal; vertical-align: top; font-size: 11px; line-height: 1.2; }
+.mon img { image-rendering: pixelated; filter: brightness(0); transition: filter 0.3s; }
+.mon b { visibility: hidden; color: #003399; }
+.wl { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; display: none; }
+#wtp0:checked ~ .wtp-box .wl1 { display: block; }
+#wtp1:checked ~ .wtp-box .wl2 { display: block; }
+#wtp2:checked ~ .wtp-box .wl0 { display: block; }
+#wtp1:checked ~ .wtp-box .reel, #wtp2:checked ~ .wtp-box .reel { animation-play-state: paused; }
+#wtp2:checked ~ .wtp-box .mon img { filter: none; }
+#wtp2:checked ~ .wtp-box .mon b { visibility: visible; }
+.wtp-hint { font-size: 10px; margin: 2px 0 0; display: none; }
+#wtp0:checked ~ .h0, #wtp1:checked ~ .h1, #wtp2:checked ~ .h2 { display: block; }
+@keyframes shuffle {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-2400px); }
+}
+
+/* Launch pad (the #launch checkbox sits at the top of <body>) */
+#launch { display: none; }
+.launch { text-align: center; }
+.pad { position: relative; height: 110px; background: #000033; border: 1px solid #000000; overflow: hidden; }
+.stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: #ffffff; }
+.stars::before, .stars::after {
+  content: ""; position: absolute; width: 2px; height: 2px; background: #ffffff;
+  box-shadow: 20px 12px, 50px 30px, 80px 8px, 110px 40px, 140px 18px, 35px 60px, 95px 70px, 125px 85px, 160px 55px, 10px 90px;
+  animation: twinkle 1.2s steps(2, end) infinite;
+}
+.stars::after { left: 7px; top: 5px; animation-delay: 0.6s; opacity: 0.6; }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: #666666; }
+.rocket { position: absolute; left: 50%; bottom: 6px; margin-left: -8px; image-rendering: pixelated; }
+.smoke { position: absolute; left: 50%; bottom: 0; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #bbbbbb; opacity: 0;
+  box-shadow: -12px 2px 0 2px #999999, 12px 2px 0 2px #999999, -24px 6px 0 1px #777777, 24px 6px 0 1px #777777; }
+.count { position: absolute; top: 8px; left: 0; right: 0; color: #ffff00; font-weight: bold; font-size: 20px; font-family: "Courier New", Courier, monospace; }
+.count::after { content: ""; }
+.btn { display: inline-block; margin-top: 6px; padding: 2px 14px; background: #cc0000; color: #ffffff; font-weight: bold; border: 2px outset #ff6666; cursor: pointer; }
+.btn:active { border-style: inset; }
+.btn::after { content: "LAUNCH"; }
+.watch { position: absolute; left: 0; right: 0; top: 50px; color: #ffff00; font-weight: bold; font-size: 11px; visibility: hidden; }
+.watch:link, .watch:visited { color: #ffff00; }
+.flyer { position: fixed; left: 0; bottom: 0; visibility: hidden; z-index: 99; pointer-events: none; image-rendering: pixelated; }
+
+/* ---- when launched ---- */
+#launch:checked ~ table.page .btn::after { content: "RESET"; }
+#launch:checked ~ table.page .btn { background: #003399; border-color: #6699ff; }
+#launch:checked ~ table.page .count::after { animation: countdown 4s steps(1, end) forwards, blink 0.25s steps(2, end) 16; }
+#launch:checked ~ table.page .count { animation: rainbow 0.5s linear 3s infinite; }
+#launch:checked ~ table.page .rocket { animation: rumble 0.08s linear 0s 38 alternate, liftoff 0.6s ease-in 3s forwards; }
+#launch:checked ~ table.page .smoke { animation: puff 1.2s ease-out 2.9s forwards; }
+#launch:checked ~ table.page .watch { animation: appear 0.1s linear 4.2s forwards; }
+#launch:checked ~ table.page { animation: shake 0.6s linear 3s 1; }
+#launch:checked ~ .flyer { animation: fly 4s linear 3.3s forwards; }
+
+@keyframes countdown {
+  0%   { content: "3"; }
+  25%  { content: "2"; }
+  50%  { content: "1"; }
+  75%  { content: "LIFTOFF!"; }
+  100% { content: "LIFTOFF!"; }
+}
+@keyframes blink { from { visibility: visible; } to { visibility: hidden; } }
+@keyframes twinkle { from { opacity: 1; } to { opacity: 0.2; } }
+@keyframes rumble { from { transform: translateX(-1px); } to { transform: translateX(1px); } }
+@keyframes liftoff { from { transform: translateY(0); } to { transform: translateY(-160px); } }
+@keyframes puff { 0% { opacity: 0; transform: scale(0.5); } 20% { opacity: 1; } 100% { opacity: 0; transform: scale(4); } }
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, -3px); }
+  80% { transform: translate(2px, 3px); }
+}
+@keyframes rainbow {
+  0% { color: #ff0000; } 25% { color: #ffff00; } 50% { color: #00ff00; } 75% { color: #00ffff; } 100% { color: #ff00ff; }
+}
+@keyframes appear { to { visibility: visible; } }
+@keyframes fly {
+  0%   { visibility: visible; transform: translate(-40px, 80px) rotate(45deg); }
+  99%  { visibility: visible; }
+  100% { visibility: hidden; transform: translate(110vw, -120vh) rotate(45deg); }
+}

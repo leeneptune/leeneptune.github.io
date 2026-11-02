@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lee Marquez, aerospace engineering student.">
   <title>Lee Marquez's Home Page</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Hidden switch for the launch pad toy. It lives up here so the whole page can react to it. -->
+<input type="checkbox" id="launch">
+<!-- Hidden until liftoff, then streaks across the whole page. -->
+<img class="flyer" src="Images/rocket.gif" alt="" width="32" height="72">
 
 <!-- ===================== HEADER (same on every page) ===================== -->
 <table class="page" width="100%" cellspacing="0" cellpadding="4">
@@ -28,6 +33,18 @@
   </td>
 </tr>
 
+<!-- ===================== TICKER ===================== -->
+<tr>
+  <td class="ticker" colspan="3">
+    <!-- Scrolling headlines. Keep it to the newest two or three news items. -->
+    <marquee scrollamount="3">
+      <b>&raquo; 11/02/26:</b> Site goes live! &nbsp;&nbsp;&nbsp;
+      <b>&raquo; 10/15/26:</b> Joined the Rocket Team propulsion subteam. &nbsp;&nbsp;&nbsp;
+      <b>&raquo;</b> Welcome to my home page. Sign in, look around, and come back soon!
+    </marquee>
+  </td>
+</tr>
+
 <!-- ===================== BODY: 3 COLUMNS ===================== -->
 <tr valign="top">
 
@@ -38,6 +55,7 @@
     <a href="resume26.pdf">R&eacute;sum&eacute; (PDF)</a><br>
     <a href="https://github.com/leeneptune">GitHub</a><br>
     <a href="https://www.linkedin.com/in/leemarquez/">LinkedIn</a><br>
+    <a href="https://www.youtube.com/@leemarquez8995">YouTube</a> <span class="new">NEW!</span><br>
 
     <div class="bar">stats</div>
     <b>5</b> projects listed<br>
@@ -45,19 +63,40 @@
     You are visitor number:<br>
     <!-- Live hit counter image from hits.sh; it counts every time the image loads. -->
     <img class="counter" src="https://hits.sh/leeneptune.github.io.svg?label=visitors&amp;color=003399&amp;labelColor=cc0000&amp;style=flat-square" alt="hit counter">
+
+    <p class="badge"><img src="Images/underconstruction.gif" alt="Under construction" width="160" height="40"></p>
+
+    <div class="bar">bookmarks</div>
+    <!-- Template: <a href="#">Name</a><br> -->
+    <a href="https://aeroastro.mit.edu/">MIT AeroAstro</a><br>
+    <a href="https://www.nasa.gov/">NASA</a><br>
+    <a href="https://www.jpl.nasa.gov/">NASA JPL</a><br>
+    <a href="https://shpe.org/">SHPE</a><br>
+    <a href="https://bulbapedia.bulbagarden.net/">Bulbapedia</a><br>
+    <a href="https://www.aiaa.org/">AIAA</a><br>
+    <a href="https://arxiv.org/list/cs.RO/recent">arXiv robotics</a><br>
+    <a href="https://www.nar.org/">Natl. Assoc. of Rocketry</a><br>
+
+    <div class="bar">neptune</div>
+    <!-- Voyager 2's full-disk portrait of Neptune, 1989, from the NASA image library (PIA01492). -->
+    <p class="live"><img src="https://images-assets.nasa.gov/image/PIA01492/PIA01492~small.jpg" alt="Neptune photographed by Voyager 2 in 1989" width="150" height="150"><br>
+    Voyager 2, August 1989. Still the only close-up visit. <a href="https://images.nasa.gov/details/PIA01492">NASA</a></p>
   </td>
 
   <!-- ---------- CENTER COLUMN ---------- -->
   <td class="center">
     <div class="bar">about</div>
-    <img class="photo" src="Images/NASAlogo.jpg" alt="NASA logo, temporary placeholder for my portrait" width="100" align="left">
+    <img class="photo" src="Images/portrait.gif" alt="Portrait of Lee Marquez" width="100" align="left">
     <p>I'm a 2nd-year undergraduate student at MIT studying AeroAstro. I work on aircraft,
     rockets, and autonomous systems, and I'm originally from Long Beach, CA.</p>
     <p class="more"><a href="about.html">Read more about me &raquo;</a></p>
     <br clear="all">
 
-    <div class="bar">featured projects</div>
-    <!-- Top three only. The full list lives on projects.html. -->
+    <div class="bar">projects &amp; experience</div>
+    <!-- Template:
+      <dt><a href="#">Name</a></dt>
+      <dd>One-line description.</dd>
+    -->
     <dl class="projects">
       <dt><a href="https://aeroastro.mit.edu/realm/">MIT REALM Lab</a> <span class="new">NEW!</span></dt>
       <dd>Undergraduate research on vision-language models for robot navigation.</dd>
@@ -67,8 +106,82 @@
 
       <dt><a href="https://rocketry.mit.edu/home">MIT Rocket Team</a></dt>
       <dd>Propulsion subteam work on a throttle-valve component tester for a self-landing rocket.</dd>
+
+      <dt><a href="https://www.nasa.gov/learning-resources/nasa-student-launch/">NASA Student Launch Initiative</a></dt>
+      <dd>Co-captain and former safety officer; led a team of eight in high-power rocketry and payload research.</dd>
+
+      <dt><a href="https://www.rocketrychallenge.org/">American Rocketry Challenge</a></dt>
+      <dd>Co-captain; designed competition rockets and placed eighth out of 800 teams.</dd>
     </dl>
-    <p class="more"><a href="projects.html">See all projects &amp; experience &raquo;</a></p>
+    <p>Launch footage and project videos are on <a href="https://www.youtube.com/@leemarquez8995">my YouTube channel</a>.</p>
+    <p class="more"><a href="projects.html">Details and roles &raquo;</a></p>
+
+    <!-- Two toy boxes side by side. Both are checkbox + CSS tricks, no scripts. -->
+    <table class="toys" width="100%" cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td width="50%">
+        <div class="bar">who's that pok&eacute;mon?</div>
+        <!-- The reel shuffles through these silhouettes; clicking freezes one and reveals it.
+             To add a Pokemon, copy a <span class="mon"> line and update the three numbers in style.css marked REEL COUNT. -->
+        <div class="wtp">
+          <!-- Three states, one radio each: 0 shuffling, 1 stopped, 2 revealed. Each click advances to the next. -->
+          <input type="radio" name="wtp" id="wtp0" checked>
+          <input type="radio" name="wtp" id="wtp1">
+          <input type="radio" name="wtp" id="wtp2">
+          <div class="wtp-box">
+            <span class="reel">
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="" width="96" height="96"><br><b>It's Bulbasaur!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="" width="96" height="96"><br><b>It's Charmander!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="" width="96" height="96"><br><b>It's Charizard!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="" width="96" height="96"><br><b>It's Squirtle!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="" width="96" height="96"><br><b>It's Pikachu!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png" alt="" width="96" height="96"><br><b>It's Jigglypuff!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png" alt="" width="96" height="96"><br><b>It's Meowth!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png" alt="" width="96" height="96"><br><b>It's Psyduck!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="" width="96" height="96"><br><b>It's Gengar!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" alt="" width="96" height="96"><br><b>It's Magikarp!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png" alt="" width="96" height="96"><br><b>It's Gyarados!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png" alt="" width="96" height="96"><br><b>It's Lapras!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="" width="96" height="96"><br><b>It's Eevee!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="" width="96" height="96"><br><b>It's Snorlax!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png" alt="" width="96" height="96"><br><b>It's Dragonite!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="" width="96" height="96"><br><b>It's Mewtwo!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="" width="96" height="96"><br><b>It's Mew!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png" alt="" width="96" height="96"><br><b>It's Cyndaquil!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png" alt="" width="96" height="96"><br><b>It's Totodile!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/179.png" alt="" width="96" height="96"><br><b>It's Mareep!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png" alt="" width="96" height="96"><br><b>It's Espeon!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png" alt="" width="96" height="96"><br><b>It's Umbreon!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png" alt="" width="96" height="96"><br><b>It's Tyranitar!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/249.png" alt="" width="96" height="96"><br><b>It's Lugia!</b></span>
+              <span class="mon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png" alt="" width="96" height="96"><br><b>It's Ho-Oh!</b></span>
+            </span>
+            <label for="wtp1" class="wl wl1" title="Click to stop"></label>
+            <label for="wtp2" class="wl wl2" title="Click to reveal"></label>
+            <label for="wtp0" class="wl wl0" title="Click to shuffle again"></label>
+          </div>
+          <p class="wtp-hint h0">Click to stop the shuffle.</p>
+          <p class="wtp-hint h1">Who is it? Click to reveal.</p>
+          <p class="wtp-hint h2">Click again to shuffle.</p>
+        </div>
+      </td>
+      <td width="50%">
+        <div class="bar">launch pad</div>
+        <div class="launch">
+          <div class="pad">
+            <span class="stars"></span>
+            <span class="smoke"></span>
+            <span class="count"></span>
+            <img class="rocket" src="Images/rocket.gif" alt="Rocket" width="16" height="36">
+            <span class="ground"></span>
+            <!-- Appears after liftoff. -->
+            <a class="watch" href="https://www.youtube.com/@leemarquez8995">Watch the real launches<br>on YouTube &raquo;</a>
+          </div>
+          <label for="launch" class="btn"></label>
+        </div>
+      </td>
+    </tr>
+    </table>
   </td>
 
   <!-- ---------- RIGHT COLUMN ---------- -->
@@ -86,7 +199,17 @@
     <!-- One <p> per item. Add or remove lines freely. -->
     <p>Currently reading: <i>Slaughterhouse-Five</i> by Kurt Vonnegut.</p>
     <p>Learning: Spanish, Chinese, and Portuguese.</p>
-    <p>Pok&eacute;mon fan since forever.</p>
+    <!-- Sprite comes from the PokeAPI sprite repo. Change the number at the end of the URL to change the Pokemon (181 = Ampharos). -->
+    <p><img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png" alt="Ampharos sprite" width="48" height="48" align="left">Favorite Pok&eacute;mon: Ampharos.<br clear="all"></p>
+
+    <div class="bar">quote</div>
+    <p class="quote">&ldquo;Earth is the cradle of humanity, but one cannot live in a cradle forever.&rdquo;</p>
+    <p class="quote">&ndash; Konstantin Tsiolkovsky, 1911</p>
+
+    <div class="bar">so cal radar</div>
+    <!-- Live radar loop from the National Weather Service, Santa Ana Mountains site (KSOX). -->
+    <p class="live"><img src="https://radar.weather.gov/ridge/standard/KSOX_0.gif" alt="Live weather radar for Southern California" width="170" height="156"><br>
+    <a href="https://radar.weather.gov/station/KSOX/standard">NWS radar</a></p>
   </td>
 
 </tr>
@@ -114,6 +237,13 @@
     <b>Last updated:</b> 11/02/26 &nbsp;|&nbsp; Questions? <a href="mailto:leexum@mit.edu">Email me</a>.
     <br>
     Copyright &copy; 2026 Lee Marquez. This site is best viewed with Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600.
+    <p class="buttons">
+      <!-- 88x31 buttons live in Images/buttons/. Add an <img> here to add one. -->
+      <img src="Images/buttons/y2k.gif" alt="Y2K compliant" width="88" height="31">
+      <img src="Images/buttons/nojs.gif" alt="100% JavaScript-free" width="88" height="31">
+      <img src="Images/buttons/html.gif" alt="Valid HTML" width="88" height="31">
+      <a href="https://aeroastro.mit.edu/"><img src="Images/buttons/aeroastro.gif" alt="MIT AeroAstro" width="88" height="31"></a>
+    </p>
   </td>
 </tr>
 </table>
