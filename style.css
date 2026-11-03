@@ -90,6 +90,14 @@ td.footer hr { border: 0; border-top: 1px solid #003399; }
 @media (max-width: 600px) {
   table.page, table.page tbody, table.page tr, table.page td { display: block; width: auto; }
   td.left, td.right { border: 0; }
+  /* Phones read top to bottom, so put the main column first, news second, and the link lists last. */
+  table.page tr.cols { display: flex; flex-direction: column; }
+  td.center { order: 1; }
+  td.right  { order: 2; }
+  td.left   { order: 3; }
+  /* Link lists run across the screen instead of one link per line. */
+  td.left a:not(.sponsor) { display: inline-block; margin-right: 12px; }
+  td.left a + br { display: none; }
   /* The stacking rule above would un-hide the toolbar rows; keep them hidden until their switches say otherwise. */
   table.page tr.toolbar { display: none; }
   /* Popups float over the page like real ones instead of sitting at the bottom of the stacked columns. */

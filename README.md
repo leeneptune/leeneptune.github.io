@@ -11,8 +11,9 @@ my website :P
 
 ## Fun mode
 
-The site is serious by default: no ads, popups, toys, ticker, or counter. Add `#fun` to the URL
-(`leeneptune.github.io/#fun`, or the "Switch to fun mode" link in the footer) to turn all of that on. The nav
+The site is serious by default: just links, about, projects, news, and bookmarks. Add `#fun` to the URL
+(`leeneptune.github.io/#fun`, or the "Fun mode" button in the header) to turn on the ads, popups, toys, ticker,
+counter, stats, Neptune, radar, and weather strip. The nav
 links keep you in whichever mode you're in. Anything marked `class="fun"` in the HTML only shows in fun mode.
 
 ## Easter eggs (fun mode, all CSS, no scripts)
